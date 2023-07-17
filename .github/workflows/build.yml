@@ -46,7 +46,13 @@ jobs:
         unityVersion: ${{ matrix.unityVersion }}
         targetPlatform: ${{ matrix.targetPlatform }}
 
-    # Output
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4.4.0
+      with:
+        branch: gh-pages
+        folder: build/${{ matrix.targetPlatform }}
+      
+      # Output
     - uses: actions/upload-artifact@v3.1.1
       with:
         name: Build-${{ matrix.targetPlatform }}
